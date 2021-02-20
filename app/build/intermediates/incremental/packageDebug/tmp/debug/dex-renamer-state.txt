@@ -1,4 +1,4 @@
-#Sat Feb 20 14:14:07 KST 2021
+#Sat Feb 20 15:31:14 KST 2021
 base.0=C\:\\Users\\Lee wan hee\\Desktop\\AndroidStudio practice\\NewsApp\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

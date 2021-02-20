@@ -1,18 +1,16 @@
 package com.bliss.csc.newsapp;
 
-public class NewsData {
+import java.io.Serializable;
+
+public class NewsData implements Serializable {
 
     private String title;
-    private String content;
+    private String description;
     private String urlToImage;
 
-    public String getContent() {
-        return content;
-    }
+    public void setDescription(String description) { this.description = description; }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+    public String getDescription() { return description; }
 
     public void setTitle(String title) {
         this.title = title;

@@ -1730,7 +1730,7 @@ id SHOW_PROGRESS
 id SYM
 id TOP_END
 id TOP_START
-id TextView_content
+id TextView_description
 id TextView_title
 id accelerate
 id accessibility_action_clickable_span
@@ -2199,6 +2199,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_news
+layout activity_newsdetail
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog

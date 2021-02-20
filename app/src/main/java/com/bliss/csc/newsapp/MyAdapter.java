@@ -19,24 +19,33 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     private List<NewsData> mDataset;
-    public MyAdapter(List<NewsData> myDataset, Context context) {
+    private static View.OnClickListener onClickListener;
+
+    public MyAdapter(List<NewsData> myDataset, Context context, View.OnClickListener onClick) {
 
         mDataset = myDataset;
+        onClickListener = onClick;
         Fresco.initialize(context);
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         public TextView TextView_title;
-        public TextView TextView_content;
+        public TextView TextView_description;
         public SimpleDraweeView ImageView_news;
+        public View rootView;
 
         public MyViewHolder(View v) {
             super(v);
 
             TextView_title = v.findViewById(R.id.TextView_title);
-            TextView_content = v.findViewById(R.id.TextView_content);
+            TextView_description = v.findViewById(R.id.TextView_description);
             ImageView_news  = v.findViewById(R.id.ImageView_title);
+            rootView = v;
+
+            v.setClickable(true);
+            v.setEnabled(true);
+            v.setOnClickListener(onClickListener);
         }
     }
 
@@ -58,20 +67,27 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.TextView_title.setText(news.getTitle());
 
 //        holder.TextView_content.setText(news.getContent());
-        String content = news.getContent();
+        String content = news.getDescription();
         if(content != null && content.length() > 0) {
-            holder.TextView_content.setText(content);
+            holder.TextView_description.setText(content);
         }
         else {
-            holder.TextView_content.setText("본문 없음.");
+            holder.TextView_description.setText("본문 없음.");
         }
 
         Uri uri = Uri.parse(news.getUrlToImage());
         holder.ImageView_news.setImageURI(uri);
+
+        //TAG
+        holder.rootView.setTag(position);
     }
 
     @Override
     public int getItemCount() {
         return mDataset == null ? 0 : mDataset.size();
+    }
+
+    public NewsData getNews(int position) {
+        return mDataset != null ? mDataset.get(position) : null;
     }
 }

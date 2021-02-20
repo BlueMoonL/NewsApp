@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -66,16 +68,30 @@ public class NewsActivity extends AppCompatActivity {
                     {
                         JSONObject obj = arrayArticles.getJSONObject(i);
 
-                        Log.d("NEWS", obj.toString());
+//                        Log.d("NEWS", obj.toString());
 
                         NewsData newsData = new NewsData();
                         newsData.setTitle(obj.getString("title"));
-                        newsData.setContent(obj.getString("title"));
+                        newsData.setDescription(obj.getString("description"));
                         newsData.setUrlToImage(obj.getString("urlToImage"));
 
                         news.add(newsData);
 
-                        mAdapter = new MyAdapter(news, NewsActivity.this);
+                        mAdapter = new MyAdapter(news, NewsActivity.this, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                Object obj = v.getTag();
+                                if(obj != null) {
+                                    int position = (int)obj;
+                                    ((MyAdapter)mAdapter).getNews(position);
+                                    Intent intent = new Intent(NewsActivity.this, NewsDetailActivity.class);
+                                    intent.putExtra("news", ((MyAdapter)mAdapter).getNews(position));
+                                    startActivity(intent);
+                                }
+                            }
+                        });
+
                         mRecyclerView.setAdapter(mAdapter);
                     }
 
