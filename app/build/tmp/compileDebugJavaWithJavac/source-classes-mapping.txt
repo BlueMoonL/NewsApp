@@ -1,0 +1,12 @@
+com/bliss/csc/newsapp/BuildConfig.java
+ com.bliss.csc.newsapp.BuildConfig
+com/bliss/csc/newsapp/NewsData.java
+ com.bliss.csc.newsapp.NewsData
+com/bliss/csc/newsapp/MyAdapter.java
+ com.bliss.csc.newsapp.MyAdapter
+ com.bliss.csc.newsapp.MyAdapter$MyViewHolder
+com/bliss/csc/newsapp/NewsActivity.java
+ com.bliss.csc.newsapp.NewsActivity
+ com.bliss.csc.newsapp.NewsActivity$1
+ com.bliss.csc.newsapp.NewsActivity$2
+ com.bliss.csc.newsapp.NewsActivity$3
